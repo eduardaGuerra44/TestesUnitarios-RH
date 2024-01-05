@@ -16,4 +16,12 @@ public class ReajusteServiceTest {
 
     }
 
+    @Test
+    public void reajusteDeveSerQuinzePorCentoParaDesempenhoBom() {
+        ReajusteService service = new ReajusteService();
+        Funcionario funcionario = new Funcionario("Clara", LocalDate.now(), new BigDecimal("1000"));
+
+        service.concederReajuste(funcionario, Desempenho.Bom);
+        assertEquals(new BigDecimal("1150.00"), funcionario.getSalario());
+    }
 }
